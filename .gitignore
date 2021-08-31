@@ -21,5 +21,4 @@
 # others
 *.bak
 *.bk
-
-
+.terraform.lock.hcl

@@ -74,30 +74,6 @@ variable "available_resource_creation" {
   default     = "VSwitch"
 }
 
-variable "internet_charge_type" {
-  description = "Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`."
-  type        = string
-  default     = "PayByTraffic"
-}
-
-variable "internet_max_bandwidth_out" {
-  description = "Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range: [0, 100]. Default to 0 Mbps."
-  type        = string
-  default     = "10"
-}
-
-variable "instance_charge_type" {
-  description = "Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`."
-  type        = string
-  default     = "PostPaid"
-}
-
-variable "system_disk_category" {
-  description = "Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`. `cloud` only is used to some none I/O optimized instance. Default to `cloud_efficiency`."
-  type        = string
-  default     = "cloud_efficiency"
-}
-
 variable "backend_port" {
   description = "Port used by the Server Load Balancer instance backend. Valid value range: [1-65535]."
   default     = 22
@@ -123,16 +99,6 @@ variable "health_check_connect_port" {
   description = "Port used for health check. Valid value range: [1-65535]. Default to `None` means the backend server port is used."
   type        = string
   default     = "20"
-}
-
-variable "slb_server_group_port" {
-  description = "The port used by the backend server. Valid value range: [1-65535]."
-  default     = 80
-}
-
-variable "slb_server_group_weight" {
-  description = "Weight of the backend server. Valid value range: [0-100]. Default to 100."
-  default     = 100
 }
 
 variable "domain" {
@@ -229,4 +195,16 @@ variable "health_check" {
   description = "Whether to enable health check. Valid values are `on` and `off`. TCP and UDP listener's HealthCheck is always on, so it will be ignore when launching TCP or UDP listener. This parameter is required and takes effect only when ListenerSync is set to off."
   type        = string
   default     = "on"
+}
+
+variable "availability_zone" {
+  description = "The available zone to launch modules."
+  type        = string
+  default     = ""
+}
+
+variable "vswitch_id" {
+  description = "VSwitch variables, if vswitch_id is empty, then the net_type = classic."
+  type        = string
+  default     = ""
 }

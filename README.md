@@ -1,11 +1,11 @@
-Alicloud SLB&Rule Terraform Module On Alibaba Cloud
+Alicloud SLB Rule Terraform Module On Alibaba Cloud
 
 terraform-alicloud-slb-rule
 ---
 
 English | [简体中文](README-CN.md)
 
-This module is used to create an SLB instance with Rule.
+This module is used to create an SLB Rule instance with Rule.
 
 These types of resources are supported:
 
@@ -15,25 +15,11 @@ These types of resources are supported:
 * [alicloud_eip](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/eip)
 * [alicloud_kvstore_instance](https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/kvstore_instance)
 
-
-## Requirements
-
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | > = 0.13.0 |
-| <a name="requirement_alicloud"></a> [alicloud](#requirement\_alicloud) | > = 1.131.0 |
-
-## Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_alicloud"></a> [alicloud](#provider\_alicloud) | > = 1.131.0 |
-
 ## Usage
 
 ```hcl
 module "rule" {
-  source              = "../"
+  source              = "terraform-alicloud-modules/slb-rule/alicloud"
   name                = "slb-rule-basic-config"
   domain              = "*.test.com"
   cookie              = "cookie-test"
@@ -47,9 +33,23 @@ module "rule" {
 * This module using AccessKey and SecretKey are from `profile` and `shared_credentials_file`. If you have not set them
   yet, please install [aliyun-cli](https://github.com/aliyun/aliyun-cli#installation) and configure it.
 
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | > = 0.13.0 |
+| <a name="requirement_alicloud"></a> [alicloud](#requirement\_alicloud) | > = 1.56.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_alicloud"></a> [alicloud](#provider\_alicloud) | > = 1.56.0 |
+
 ## Submit Issues
 
-If you have any problems when using this module, please opening a [provider issue](https://github.com/aliyun/terraform-provider-alicloud/issues/new) and let us know.
+If you have any problems when using this module, please opening
+a [provider issue](https://github.com/aliyun/terraform-provider-alicloud/issues/new) and let us know.
 
 **Note:** There does not recommend to open an issue on this repo.
 
