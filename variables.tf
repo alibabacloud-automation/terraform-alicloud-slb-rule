@@ -1,7 +1,7 @@
 variable "name" {
   description = "The name of a new load balancer."
   type        = string
-  default     = "slb-rule-basic-config"
+  default     = ""
 }
 
 variable "spec" {
@@ -54,11 +54,13 @@ variable "images_owners" {
 
 variable "cpu_core_count" {
   description = "Number of CPU cores."
+  type        = number
   default     = 1
 }
 
 variable "memory_size" {
   description = "Size of memory, measured in GB."
+  type        = number
   default     = 2
 }
 
@@ -76,11 +78,13 @@ variable "available_resource_creation" {
 
 variable "backend_port" {
   description = "Port used by the Server Load Balancer instance backend. Valid value range: [1-65535]."
+  type        = number
   default     = 22
 }
 
 variable "frontend_port" {
   description = "Port used by the Server Load Balancer instance frontend."
+  type        = number
   default     = 22
 }
 
@@ -92,6 +96,7 @@ variable "protocol" {
 
 variable "bandwidth" {
   description = "Bandwidth peak of Listener."
+  type        = number
   default     = 5
 }
 
@@ -121,6 +126,7 @@ variable "cookie" {
 
 variable "cookie_timeout" {
   description = "Cookie timeout. It is mandatory when sticky_session is `on` and sticky_session_type is `insert`. Otherwise, it will be ignored. Valid value range: [1-86400] in seconds."
+  type        = number
   default     = 100
 }
 
@@ -132,6 +138,7 @@ variable "health_check_http_code" {
 
 variable "health_check_interval" {
   description = "Time interval of health checks. It is required when `health_check` is on. Valid value range: [1-50] in seconds. Default to 2."
+  type        = number
   default     = 2
 }
 
@@ -143,21 +150,25 @@ variable "health_check_uri" {
 
 variable "rule_health_check_connect_port" {
   description = "Port used for health check. Valid value range: [1-65535]. Default to `None` means the backend server port is used."
+  type        = number
   default     = 80
 }
 
 variable "health_check_timeout" {
   description = "Maximum timeout of each health check response. It is required when `health_check` is on. Valid value range: [1-300] in seconds. Default to 5. Note: If `health_check_timeout` < `health_check_interval`, its will be replaced by `health_check_interval`."
+  type        = number
   default     = 30
 }
 
 variable "healthy_threshold" {
   description = "Threshold determining the result of the health check is success. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3."
+  type        = number
   default     = 3
 }
 
 variable "unhealthy_threshold" {
   description = "Threshold determining the result of the health check is fail. It is required when `health_check` is on. Valid value range: [1-10] in seconds. Default to 3."
+  type        = number
   default     = 3
 }
 
